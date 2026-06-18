@@ -5,8 +5,9 @@
   --foreground: #171717;
 }
 
-@theme{
+@theme {
   --color-themepink: #ff3b9a;
+  --color-themedarkblue: #1532A8;
 }
 
 @theme inline {
