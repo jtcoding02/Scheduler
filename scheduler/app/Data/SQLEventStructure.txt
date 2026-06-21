@@ -1,0 +1,25 @@
+TABLE Event
+
+ID
+
+TABLE User
+id
+email
+username
+password
+firstname
+lastname
+
+event id
+title
+startdate
+dd-mm-yyyy
+starttime 
+hh:mm
+enddate
+dd-mm-yyyy
+endtime
+hh:mm
+description (longtext)
+foreign key
+userid

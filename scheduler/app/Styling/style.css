@@ -4,83 +4,19 @@
     color: #1532A8;
 }
 
-/*Calendar*/
-
-/*calendar*/
-/* .calendar-div{
-  width: 900px;
-  height: 600px;
+/*Modal Styling*/
+.modal-buttons-div{
   display: flex;
-  flex-direction: column;
-} */
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  
+}
 
-/* .calendar-header {
-  height: 100px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-} */
+.modal-button{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+}
 
-/*calendar-body*/
-/* .calendar{
-  width: 100%;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-} */
-
-/*table-header*/
-/* .calendar-title-div{
-  height: 100px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-} */
-
-/*weekday*/
-/* .calendar-title-day{
-  width: 100px;
-  text-align: center;
-} */
-
-/*table-content*/
-/* .calendarday-div{
-  width: 100%;
-  flex-grow: 1;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  box-sizing: border-box;
-} */
-
-/*calendar-day*/
-/* .calendar-day{
-  width: 125px;
-  height: 75px;
-  position: relative;
-  border: 1px solid #a6a6a6;
-} */
-
-/*calendar-day:hover */
-/* .calendar-day:hover{
-  background-color: rgba(0,0,0,.10);
-} */
-
-/*.calendar-day p*/
-/* .calendar-day p{
-  position: absolute;
-  right: 10px;
-  color: #a6a6a6;
-} */
-
-/*.current p */
-/* .current p{
-  color: #000000;
-} */
-
-/*.selected p */
-/* .selected p {
-  color: #cc0000;
-  font-weight: bold;
-} */

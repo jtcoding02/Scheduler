@@ -1,0 +1,71 @@
+[
+    {"id": 1, 
+    "userid":1,
+    "title" : "Event 1 of 7 Events", 
+    "start-date": "11-06-2026",
+    "start-time": "11:00",
+    "end-date": "11-06-2026",
+    "end-time":"12:00",
+    "description":"This is a description that was written for Event 1. It is not compulsory and can be not added to the event."
+    },
+
+    {"id": 2, 
+    "userid":1,
+    "title" : "Event 2", 
+    "start-date": "11-06-2026",
+    "start-time": "13:00",
+    "end-date": "11-06-2026",
+    "end-time":"13:30",
+    "description":"This is a description that was written for Event 2."
+    },
+
+    {"id": 3, 
+    "userid":1,
+    "title" : "Event 3", 
+    "start-date": "11-06-2026",
+    "start-time": "19:00",
+    "end-date": "11-06-2026",
+    "end-time":"20:00",
+    "description":null
+    },
+
+    {"id": 4, 
+    "userid":1,
+    "title" : "Event 3", 
+    "start-date": "11-06-2026",
+    "start-time": "19:00",
+    "end-date": "11-06-2026",
+    "end-time":"20:00",
+    "description":null
+    },
+
+    {"id": 5, 
+    "userid":1,
+    "title" : "Event 3", 
+    "start-date": "11-06-2026",
+    "start-time": "19:00",
+    "end-date": "11-06-2026",
+    "end-time":"20:00",
+    "description":null
+    },
+
+    {"id": 6, 
+    "userid":1,
+    "title" : "Event 3", 
+    "start-date": "11-06-2026",
+    "start-time": "19:00",
+    "end-date": "11-06-2026",
+    "end-time":"20:00",
+    "description":null
+    },
+
+    {"id": 7, 
+    "userid":1,
+    "title" : "Event 3", 
+    "start-date": "11-06-2026",
+    "start-time": "19:00",
+    "end-date": "11-06-2026",
+    "end-time":"20:00",
+    "description":null
+    }
+]
