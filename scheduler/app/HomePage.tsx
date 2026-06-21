@@ -6,14 +6,21 @@ import MenuBar from './Components/MenuBar';
 import Calendar from './Components/Calendar';
 function HomePage(){
     return (
-        <div className="homepage-div h-screen w-screen bg-white">
-            <div className = "topnavbar-div">
+        /* Later remove overflow-hidden */
+        <div className="homepage-div h-screen w-full bg-white flex flex-col overflow-auto">
+            <div className = "topnavbar-div w-full flex-shrink-0">
                 <TopNavBar />
             </div>
-            <div className = "menu-bar-div">
+            <div className = "bottom-div flex-1 w-full min-h-0">
+                <div className = "calendar-page-div flex-1 w-full h-full">
                 {/* <MenuBar/> */}
-                <Calendar/>
+                    <Calendar/>
+                </div>
+                <div className = "events-page-div">
+
+                </div>
             </div>
+            
         </div>
     );
 }

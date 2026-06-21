@@ -7,9 +7,9 @@ import AccountIconPNG from '../Assets/AccountIcon.png';
 
 const TopNavBar = () => {
     return (
-        <div className = "navbar-div flex w-screen h-[4rem]" >
-            <nav className = "navbar h-full w-full flex p-2 justify-between bg-[#1532A8] align-middle">
-                <div className="navbar-left h-full flex justify-center align-middle items-center">
+        <div className = "navbar-div flex w-full h-full min-h-[4rem]" >
+            <nav className = "navbar h-full w-full flex p-2 justify-between bg-[#1532A8] items-center">
+                <div className="navbar-left h-full flex justify-center items-center">
 
                     <div className="navbar-logo-div pr-2 items-center">
                           <div className="navbar-logo p-1">
@@ -33,7 +33,7 @@ const TopNavBar = () => {
                 </div> */}
 
                 <div className="navbar-right">
-                    <div className = "navbar-account-div items-center justify-center align-middle">
+                    <div className = "navbar-account-div items-center justify-center align-middle flex">
                         <Image src={AccountIconSVG} className = "navbar-account size-[2rem]"  alt = "Account Icon" />
                     </div>
                 </div>
