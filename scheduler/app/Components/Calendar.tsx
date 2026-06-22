@@ -10,7 +10,12 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import mockEventData from '../Data/MockEventData'; // Import your events
 
-function Calendar () {
+interface CalendarProps{
+    events: any[], 
+    onCreateClick: () => void,
+    onEventAction: (mode: 'view' | 'edit' | 'delete', event: any) => void
+}
+function Calendar ({events, onCreateClick, onEventAction} : CalendarProps) {
 
     // const calendarTitleDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     // const calendarTitleMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
@@ -96,7 +101,7 @@ function Calendar () {
         setSelectedDate(new Date(y, m, d));
     }
 
-    const selectedDateEvents = mockEventData.filter((e) => {
+    const selectedDateEvents = events.filter((e) => {
         const eventDate = new Date(e.startDate);
         return (
             eventDate.getDate() === selectedDate.getDate() &&
@@ -110,6 +115,8 @@ function Calendar () {
         
     //     setSelectedDate(new Date(day.year, day.month, day.dateDay));
     // }
+
+
 
     return (
         /* Remove box-border */
@@ -165,7 +172,9 @@ function Calendar () {
                                         </button>
                                     )}
                                     <div className="create-btn-div">
-                                        <button className="create-btn p-3 rounded-lg flex bg-[#1532A8] hover:bg-[#324EBE] focus:bg-[#324EBE] justify-center">
+                                        <button 
+                                        onClick={onCreateClick}
+                                        className="create-btn p-3 rounded-lg flex bg-[#1532A8] hover:bg-[#324EBE] focus:bg-[#324EBE] justify-center">
                                             <div className="create-label-div flex justify-center items-center pr-2">
                                                 <p className="create-label font-bold text-white text-base ">CREATE</p>
                                             </div>
@@ -194,12 +203,13 @@ function Calendar () {
                             }
                         </div>
                         <div className="calendar-grid-div w-full flex-1 min-h-0">
-                            <CalendarData date={selectedDate} changeSelectedDay = {changeSelectedDay} />
+                            <CalendarData date={selectedDate} events={events} changeSelectedDay = {changeSelectedDay} />
                         </div>
                     </div>
             </div>
 
             {/* Sidebar View Area: Receives dynamic dates and filtered events directly from Calendar state */}
+            {/* Sidebar panel area */}
             {showEventsPanel && (
                 <div className={`events-page-div h-full transition-all duration-300 border-l border-gray-200 bg-gray-50 flex flex-col flex-shrink-0 ${
                     isCollapsed ? 'w-16 min-w-[4rem]' : 'w-96 min-w-[24rem]'
@@ -212,6 +222,7 @@ function Calendar () {
                         isCollapsed={isCollapsed}
                         onToggle={() => setIsCollapsed(!isCollapsed)}
                         onClose={() => setShowEventsPanel(false)}
+                        onEventAction={onEventAction} // <-- ADD THIS CRITICAL LINE HERE
                     />
                 </div>
             )}

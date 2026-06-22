@@ -9,6 +9,16 @@ import CalendarDayCell from './CalendarDayCell';
 //I think this is to fill up the actual calendar...
 //Not dropdown
 
+interface CalendarEvent {
+    id: number;
+    title: string;
+    startDate: string;
+    endDate: string;
+    description?: string;
+}
+
+
+
 function CalendarData({...props}){
 
     const dayOfMonth = new Date(props.date.getFullYear(), props.date.getMonth(), 1);
@@ -40,8 +50,9 @@ function CalendarData({...props}){
     const [newDay, setNewDay] = useState<number>(dayOfMonth.getDate());
 
     //use pop up to push
-    const eventData = mockEventData;
-
+    //const eventData = props.events;
+    // If coming from props, ensure it's declared:
+    const eventData: CalendarEvent[] = props.events;
     //edit later to adjust to different month
     //to remove useless rows
 

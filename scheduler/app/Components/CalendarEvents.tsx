@@ -20,9 +20,10 @@ interface CalendarEventsProps {
     isCollapsed: boolean;
     onToggle: () => void;
     onClose: () => void;
+    onEventAction: (mode: 'view' | 'edit' | 'delete', event: any) => void;
 }
 
-const CalendarEvents = ({ d, m, y, events, isCollapsed, onToggle, onClose } : CalendarEventsProps) => {
+const CalendarEvents = ({ d, m, y, events, isCollapsed, onToggle, onClose, onEventAction } : CalendarEventsProps) => {
     //means opened if false
     //means closed is true
     const [isDetailClosed, setIsDetailClosed] = useState<Boolean>(false);
@@ -50,42 +51,31 @@ const CalendarEvents = ({ d, m, y, events, isCollapsed, onToggle, onClose } : Ca
     }
     
     return (
-        <div className = "events-detail-div flex flex-col h-full w-full bg-gray-50">
-            <div className ="events-header-div flex justify-between items-center p-4 border-b border-gray-200 min-h-[4rem] flex-shrink-0 bg-white">
+        <div className="flex flex-col h-full w-full">
+            <div className="detail-header-div flex p-4 justify-between items-center border-b border-gray-200 bg-white">
                 <div className="detail-header-left flex items-center gap-4">
-                    <div className = "detail-arrow-div">
-                        <button 
-                        onClick={onToggle}
-                        className = "detail-arrow-btn size-10 flex justify-center items-center rounded-full bg-black text-white hover:bg-gray-800 transition-colors shadow-md">
-                            
-                            <ArrowForwardIosIcon className="forward-arrow size-5"/>
-                            
-                        </button>
-                    </div>
-                    <div className="detail-date-div flex">
-                        <p className="detail-date text-xl text-black font-bold tracking-tight" >
-                            {d} {m} {y}
-                        </p>
-
-                    </div>
+                    <button onClick={onToggle} className="detail-collapse-btn p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                        Close
+                    </button>
+                    <p className="text-xl text-black font-bold">{d} {m} {y}</p>
                 </div>
-                <div className="detail-header-right flex items-center">
-                        <button 
-                        onClick={onClose}
-                        className = "detail-close-btn size-10 flex justify-center items-center rounded-full text-white bg-red-600 hover:bg-red-700 transition-colors shadow-md">
-                            <CloseIcon className ="close-icon size-6"/>
-                        </button>
-                </div>
+                <button onClick={onClose} className="size-10 flex justify-center items-center rounded-full text-white bg-red-600 hover:bg-red-700 transition-colors">
+                    <CloseIcon className="size-6"/>
+                </button>
             </div>
-            <div className ="events-list-div flex-1 overflow-y-auto p-4 flex flex-col gap-4">
+            
+            <div className="events-list-div flex-1 overflow-y-auto p-4 flex flex-col gap-4">
                 {events.length > 0 ? (
                     events.map((e) => (
-                        <CalendarEventCard key={e.id} event={e} />
+                        <CalendarEventCard 
+                            key={e.id} 
+                            event={e} 
+                            onAction={(mode) => onEventAction(mode, e)} 
+                        />
                     ))
                 ) : (
                     <div className="flex flex-col items-center justify-center h-48 text-gray-400">
                         <p className="text-sm font-medium">No events scheduled.</p>
-                        <p className="text-xs mt-1">Enjoy your free time!</p>
                     </div>
                 )}
             </div>
