@@ -17,37 +17,72 @@ interface CalendarEvent {
     description?: string;
 }
 
-
-
 function CalendarData({...props}){
 
-    const dayOfMonth = new Date(props.date.getFullYear(), props.date.getMonth(), 1);
-    const currentMonth = props.date.getMonth();
+    const getDaysInMonth = (month: number, year: number) => {
+        const days = new Date(year, month + 1, 0).getDate();
+        console.log("Days in Month: " + days); 
+        return days;
+    }
+
+    const getEndDateOfMonth = (month: number, year: number) => {
+        const lastDay = getDaysInMonth(month, year);
+        console.log(lastDay);
+        const firstDay = new Date(year, month, 1);
+        const lastDate = new Date(year, month, lastDay);
+        return lastDate; 
+    }
+
+    const getCalendarRows = (daysNum: number) => {
+
+    }
+
+    //Get Month Year
+    const currentMonth =  props.date.getMonth();
+    const currentYear = props.date.getFullYear();
+    const firstDayOfMonth = new Date(props.date.getFullYear(), props.date.getMonth(), 1);
+    const lastDayOfMonth = getEndDateOfMonth(props.date.getMonth(), props.date.getFullYear());
+    const daysInMonth = getDaysInMonth(props.date.getMonth(), props.date.getFullYear());
+    
+    //Which day, Sun, Mon, Tue, Wed, Thu, Fri, Sat, Sun
+    const titleDay = firstDayOfMonth.getDay();
+    
 
     const havePreviousMonth = false;
     const haveNextMonth = false;
 
-    //const [firstDayOfMonth, setFirstDayOfMonth] = useState(dayOfMonth);
-
-    const titleDay = dayOfMonth.getDay();
+    const getRowsNum = (days : number, col : number) =>{
+        const remainder = days % col;
+        //if no remainder
+        if (remainder === 0) {
+            console.log("No Remainder")
+            const rows = days / col;
+            console.log("Rows: " + rows);
+            return rows; 
+        }
+        else{
+            console.log("Remainder")
+        
+            const rows = Math.floor(days / col) + 1;
+            console.log("Rows: " + rows);
+            return rows;
+        }
+    }
+    
+    const columnNum = 7;
+    const [numOfRows, setNumOfRows] = useState()
+    const rowsNum = getRowsNum(daysInMonth, columnNum);
+    const numberOfDays = rowsNum * columnNum;
     const currentDaysArray = [];
 
     //If month starts on Tuesday (2), go back 2 days to previous month
-    const startDate = new Date(dayOfMonth);
-    startDate.setDate(dayOfMonth.getDate() - titleDay);
+    const startDate = new Date(firstDayOfMonth);
+    startDate.setDate(firstDayOfMonth.getDate() - titleDay);
+
 
     //const [currentDays, setCurrentDays] = useState([]);
 
-    //day representing the first section
-    //each calendar for month year has 42 sections
-    //00 01 02 03 04 05 06
-    //07 08 09 10 11 12 13
-    //14 15 16 17 18 19 20
-    //21 22 23 24 25 26 27
-    //28 29 30 31 32 33 34
-    //35 36 37 38 39 40 41
-
-    const [newDay, setNewDay] = useState<number>(dayOfMonth.getDate());
+    const [newDay, setNewDay] = useState<number>(firstDayOfMonth.getDate());
 
     //use pop up to push
     //const eventData = props.events;
@@ -55,6 +90,8 @@ function CalendarData({...props}){
     const eventData: CalendarEvent[] = props.events;
     //edit later to adjust to different month
     //to remove useless rows
+
+    
 
     //Convert ISO Date to dictionary
     const convertISODate = (isoDate : string) => {
@@ -106,26 +143,26 @@ function CalendarData({...props}){
     }
     
 
-    for(let i = 0; i < 42; i++){
+    for(let i = 0; i < numberOfDays; i++){
         const loopDate = new Date(startDate);
         loopDate.setDate(startDate.getDate() + i);
 
         //for example: day = 0, title  = sunday
         //if day is first day and day is sunday
         // if(day === 0 && titleDay === 0){
-        //     setNewDay(dayOfMonth.getDate() - 7);
-        //     dayOfMonth.setDate(newDay);
+        //     setNewDay(firstDayOfMonth.getDate() - 7);
+        //     firstDayOfMonth.setDate(newDay);
         // }
         // //if day is first and day is not sunday
         // else if (day === 0){
-        //     setNewDay(dayOfMonth.getDate() + (day - titleDay));
-        //     dayOfMonth.setDate(newDay);
-        //     //dayOfMonth.setDate();
+        //     setNewDay(firstDayOfMonth.getDate() + (day - titleDay));
+        //     firstDayOfMonth.setDate(newDay);
+        //     //firstDayOfMonth.setDate();
         // }
         // else{
-        //     setNewDay(dayOfMonth.getDate() + 1);
-        //     dayOfMonth.setDate(newDay);
-        //     //dayOfMonth.setDate(dayOfMonth.getDate() + 1);
+        //     setNewDay(firstDayOfMonth.getDate() + 1);
+        //     firstDayOfMonth.setDate(newDay);
+        //     //firstDayOfMonth.setDate(dayOfMonth.getDate() + 1);
         // }
 
         let calendarDay = {
@@ -136,12 +173,19 @@ function CalendarData({...props}){
             selected: (loopDate.toDateString() === props.date.toDateString()),
             year: loopDate.getFullYear()
         }
-
+ 
         currentDaysArray.push(calendarDay);
     }
 
     return (
-        <div className="calendarday-div w-full h-full grid grid-cols-7 grid-rows-6 box-border">
+    <div 
+        className={`calendarday-div w-full h-full grid box-border`}
+        style={{
+            gridTemplateColumns: `repeat(${columnNum}, minmax(0, 1fr))`,
+            gridTemplateRows: `repeat(${rowsNum}, minmax(0, 1fr))`
+
+        }}
+    >
             {
                 currentDaysArray.map((date) => {
 

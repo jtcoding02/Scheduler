@@ -31,22 +31,11 @@ function Calendar ({events, onCreateClick, onEventAction} : CalendarProps) {
     const month = today.getMonth();
     const year = today.getFullYear();
 
-
-
-    const [currentDate, setCurrentDate] = useState(today);
-    const [currentDay, setCurrentDay] = useState(day);
-    const [currentTitleDay, setCurrentTitleDay] = useState(dayOfWeek);
-    const [currentMonth, setCurrentMonth] = useState(month);
-    const [currentYear, setCurrentYear] = useState(year);
-    
-    
-
     const [selectedDate, setSelectedDate] = useState(today);
     //const [selectedDate, setSelectedDate] = useState(currentDate);
-    const [selectedDay, setSelectedDay] = useState(currentDay);
-    const [selectedTitleDay, setSelectedTitleDay] = useState(currentTitleDay);
-    const [selectedMonth, setSelectedMonth] = useState(currentMonth);
-    const [selectedYear, setSelectedYear] = useState(currentYear);
+    const [selectedDay, setSelectedDay] = useState(day);
+    const [tempDayBool, setTempDayBool] = useState<boolean>(false); 
+    
 
     
     // const [calendarTitleDays, setCalendarTitleDays] 
@@ -65,6 +54,20 @@ function Calendar ({events, onCreateClick, onEventAction} : CalendarProps) {
     const [showEventsPanel, setShowEventsPanel] = useState(true);
     const [isCollapsed, setIsCollapsed] = useState(false);
 
+    const getDaysInMonth = (month: number, year: number) => {
+        const days = new Date(year, month + 1, 0).getDate();
+        console.log("Days in Month: " + days); 
+        return days;
+    }
+
+    const getEndDateOfMonth = (month: number, year: number) => {
+        const lastDay = getDaysInMonth(month, year);
+        console.log(lastDay);
+        const firstDay = new Date(year, month, 1);
+        const lastDate = new Date(year, month, lastDay);
+        return lastDate; 
+    }
+
     const changeSelectedDay = (day: { year: number; month: number; dateDay: number}) => {
         
         setSelectedDate(new Date(day.year, day.month, day.dateDay));
@@ -72,11 +75,20 @@ function Calendar ({events, onCreateClick, onEventAction} : CalendarProps) {
         setIsCollapsed(false);    
     }
 
-    const changeSelectedMonth = (year: number, month: number, dateDay: number, prevMonth: boolean,) => {
+    const changeSavedDay = (day: number) => {
+        setSelectedDay(day);
+    }
+
+    const changeTempBool = (bool:boolean) => {
+        setTempDayBool(bool);
+    }
+
+    const changeSelectedMonth = (year: number, month: number, dateDay: number, prevMonth: boolean, tempBool: boolean, savedDay : number) => {
         
-        let d = dateDay;
+        
         let m = month;
         let y = year;
+        
 
         //0 is Jan, 11 is Dec
         if(prevMonth){
@@ -98,7 +110,85 @@ function Calendar ({events, onCreateClick, onEventAction} : CalendarProps) {
             }
         }
 
-        setSelectedDate(new Date(y, m, d));
+        let d = dateDay;
+        const endDay = getDaysInMonth(month, year);
+        const newEndDay = getDaysInMonth(m, y);
+
+        const newChangedDate = new Date(y, m, d);
+        
+        //POTENTIAL END DATES
+        //28, 29, 30, 31
+        //EITHER: 28, 30, 31
+        //OR: 29, 30, 31
+
+        //JAN: 31, FEB: 28/29, MAR: 31
+        //APR: 30, MAY: 31, JUN, 30
+        //JUL: 31, AUG: 31, SEP: 30
+        //OCT: 31, NOV: 30, DEC: 31
+
+        //SCENARIO 1:
+        //31 TO 28 TO 31
+        // 31 TO 30 TO 31
+        
+        //IMPOSSIBLE SCENARIO:
+        // 31 TO 30 TO 28 TO 30 TO 31
+        // 31 TO 30 TO 28 TO 31
+        // 31 TO 28 TO 30 TO 31
+
+        //Current Mon is 30
+        //Saved Day is 31
+        //Next Mon is 28
+
+        //If prev mon < saved day
+        if(tempBool){
+            //Temp Bool would imply Prev Mon < Saved Day
+            //Saved Day: 31, New End Day: 28, Current End Day: 30
+
+            //tempbool faLse, selected day and saved day = 31
+            //next mon = 30, so 31 > 30, so tempbool = true, selected day = 30, saved day = 31
+            //tempbool = true, selected day = 30, saved day = 31, next mon = 28
+            //next mon 28 < 31
+            //now check selected day, 30 < or => next mon
+            //if selected day < next mon
+            //selected day now is next mon
+            
+
+            //Other Scenario
+            ////Saved Day: 31, New End Day: 30, Current End Day: 28
+            //  ig logic wld be 31 -> 28 -> 28 -> 31
+
+
+            //31 -> 30, 
+            //if 28 
+            if(newEndDay < savedDay && newEndDay < endDay){
+                //TEMP BOOL REMAINS TRUE
+                //SAVED DAY IS TRUE
+                setSelectedDate(new Date(y, m, newEndDay));
+            }
+            else if(newEndDay < savedDay){
+
+            }
+            else{
+
+            }
+        }
+
+        //If prev mon >= saved day
+        else{
+
+        }
+
+        // if(endDayOfNewMonth < d){
+        //     setTempDayBool(true);
+        //     setSelectedDate(new Date(y, m, endDayOfNewMonth));
+        // }
+        // else{
+        //     setTempDayBool(false);
+        //     setSelectedDay(d);
+        //     setSelectedDate(new Date(y, m, d));
+        // }
+
+        
     }
 
     const selectedDateEvents = events.filter((e) => {
@@ -133,7 +223,7 @@ function Calendar ({events, onCreateClick, onEventAction} : CalendarProps) {
 
                                             <div className="prev-btn-div flex">
                                                 <button className="prev-month-button rounded-xl bg-black size-[2rem] p-2 flex justify-center items-center"
-                                                onClick = {() => changeSelectedMonth(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate(), true)}
+                                                onClick = {() => changeSelectedMonth(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate(), true, tempDayBool, selectedDay)}
                                                 >
                                                     <ArrowBackIosIcon className="h-full w-full text-white flex justify-center items-center"/>
                                                 </button>
@@ -152,7 +242,7 @@ function Calendar ({events, onCreateClick, onEventAction} : CalendarProps) {
                                         <div className="next-month-div flex pl-4">
                                             <div className="next-btn-div flex justify-center items-center">
                                                 <button className="next-month-button rounded-xl bg-black size-[2rem] p-2 justify-center items-center flex"
-                                                onClick = {() => changeSelectedMonth(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate(), false)}
+                                                onClick = {() => changeSelectedMonth(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate(), false, tempDayBool, selectedDay)}
                                                 >
                                                     <ArrowForwardIosIcon className="h-full w-full text-white"/>
                                                 </button>

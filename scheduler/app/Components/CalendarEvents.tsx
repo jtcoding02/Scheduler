@@ -12,6 +12,8 @@ import CalendarEventCard from './CalendarEventCard';
 //> when opened, should close
 //closeDetail is 
 
+//Add react virtualisation by only rendering events in
+
 interface CalendarEventsProps {
     d: string;
     m: string;
