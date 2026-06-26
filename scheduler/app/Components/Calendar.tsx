@@ -165,11 +165,18 @@ function Calendar ({events, onCreateClick, onEventAction} : CalendarProps) {
                 //SAVED DAY IS TRUE
                 setSelectedDate(new Date(y, m, newEndDay));
             }
+            //if 31 -> 28,
+            //if 30
             else if(newEndDay < savedDay){
-
+                setSelectedDate(new Date(y, m, endDay));
             }
+            //
+            //saved Day: 30 -> endDay -> 28
+            //if newEndDay => savedDay
+            //if newEndDay >
             else{
-
+                setSelectedDate(new Date(y, m, savedDay));
+                setTempDayBool(false);
             }
         }
 
