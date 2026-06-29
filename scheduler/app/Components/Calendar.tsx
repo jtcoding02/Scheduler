@@ -183,17 +183,9 @@ function Calendar ({events, onCreateClick, onEventAction} : CalendarProps) {
         //If prev mon >= saved day
         else{
 
+            setSelectedDate(new Date(y, m, savedDay));
         }
 
-        // if(endDayOfNewMonth < d){
-        //     setTempDayBool(true);
-        //     setSelectedDate(new Date(y, m, endDayOfNewMonth));
-        // }
-        // else{
-        //     setTempDayBool(false);
-        //     setSelectedDay(d);
-        //     setSelectedDate(new Date(y, m, d));
-        // }
 
         
     }
