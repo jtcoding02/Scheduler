@@ -69,7 +69,7 @@ function Calendar ({events, onCreateClick, onEventAction} : CalendarProps) {
     }
 
     const changeSelectedDay = (day: { year: number; month: number; dateDay: number}) => {
-        
+        setSelectedDay(day.dateDay);  
         setSelectedDate(new Date(day.year, day.month, day.dateDay));
         setShowEventsPanel(true); 
         setIsCollapsed(false);    
@@ -83,9 +83,14 @@ function Calendar ({events, onCreateClick, onEventAction} : CalendarProps) {
         setTempDayBool(bool);
     }
 
-    const changeSelectedMonth = (year: number, month: number, dateDay: number, prevMonth: boolean, tempBool: boolean, savedDay : number) => {
-        
-        
+    const changeSelectedMonth = 
+    (year: number, month: number, dateDay: number, 
+        prevMonth: boolean, tempBool: boolean, savedDay : number) => {
+        //let month be 07
+        // year be 2026
+        //let dateDay be 31
+        //original selected month is month and year before any changes
+        //the goal function
         let m = month;
         let y = year;
         
@@ -110,54 +115,24 @@ function Calendar ({events, onCreateClick, onEventAction} : CalendarProps) {
             }
         }
 
+        //new month
+
+        //d/dateday/selected date is what is the current highlighted day, 
+        // not guarantee is the current actual selected / current day by the user
+        //savedDay is actual selected day / current day
+        //  not guaranteed the current reflected date in user interface
+
         let d = dateDay;
+        //this is the number of days of the month and year that was selected before pressing arrow button
         const endDay = getDaysInMonth(month, year);
+        //this is the number of days of the month and year that appeared after arrow button
         const newEndDay = getDaysInMonth(m, y);
 
         const newChangedDate = new Date(y, m, d);
-        
-        //POTENTIAL END DATES
-        //28, 29, 30, 31
-        //EITHER: 28, 30, 31
-        //OR: 29, 30, 31
-
-        //JAN: 31, FEB: 28/29, MAR: 31
-        //APR: 30, MAY: 31, JUN, 30
-        //JUL: 31, AUG: 31, SEP: 30
-        //OCT: 31, NOV: 30, DEC: 31
-
-        //SCENARIO 1:
-        //31 TO 28 TO 31
-        // 31 TO 30 TO 31
-        
-        //IMPOSSIBLE SCENARIO:
-        // 31 TO 30 TO 28 TO 30 TO 31
-        // 31 TO 30 TO 28 TO 31
-        // 31 TO 28 TO 30 TO 31
-
-        //Current Mon is 30
-        //Saved Day is 31
-        //Next Mon is 28
+    
 
         //If prev mon < saved day
         if(tempBool){
-            //Temp Bool would imply Prev Mon < Saved Day
-            //Saved Day: 31, New End Day: 28, Current End Day: 30
-
-            //tempbool faLse, selected day and saved day = 31
-            //next mon = 30, so 31 > 30, so tempbool = true, selected day = 30, saved day = 31
-            //tempbool = true, selected day = 30, saved day = 31, next mon = 28
-            //next mon 28 < 31
-            //now check selected day, 30 < or => next mon
-            //if selected day < next mon
-            //selected day now is next mon
-            
-
-            //Other Scenario
-            ////Saved Day: 31, New End Day: 30, Current End Day: 28
-            //  ig logic wld be 31 -> 28 -> 28 -> 31
-
-
             //31 -> 30, 
             //if 28 
             if(newEndDay < savedDay && newEndDay < endDay){
@@ -182,8 +157,28 @@ function Calendar ({events, onCreateClick, onEventAction} : CalendarProps) {
 
         //If prev mon >= saved day
         else{
-
-            setSelectedDate(new Date(y, m, savedDay));
+            //check curr mon >= or < day
+            if(newEndDay < savedDay && newEndDay < endDay){
+                //TEMP BOOL REMAINS TRUE
+                //SAVED DAY IS TRUE
+                setTempDayBool(true);
+                setSelectedDate(new Date(y, m, newEndDay));
+            }
+            //if 31 -> 28,
+            //if 30
+            else if(newEndDay < savedDay){
+                setSelectedDate(new Date(y, m, endDay));
+            }
+            //
+            //saved Day: 30 -> endDay -> 28
+            //if newEndDay => savedDay
+            //if newEndDay >
+            else{
+                setSelectedDate(new Date(y, m, savedDay));
+                setTempDayBool(false);
+            }
+            changeSavedDay(dateDay);                                            
+            setSelectedDate(new Date(y, m, dateDay));
         }
 
 
@@ -198,13 +193,6 @@ function Calendar ({events, onCreateClick, onEventAction} : CalendarProps) {
             eventDate.getFullYear() === selectedDate.getFullYear()
         );
     });
-
-    //change to changeSelectedDay
-    // const changeSelectedDay = (day: { year: number; month: number; dateDay: number}) => {
-        
-    //     setSelectedDate(new Date(day.year, day.month, day.dateDay));
-    // }
-
 
 
     return (
