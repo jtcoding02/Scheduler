@@ -97,7 +97,15 @@
 //2nd Month, 30 Jan 2027
 //3rd Month, 28 Feb 2027
 //4th Month, 30 Mar 2027
-//5 M
+//5th Month, 31 Apr 2027
+
+//Scenario 2:
+//1st month, 31 Dec 2026
+//2nd Month, 30 Jan 2027
+//3rd Month, 28 Feb 2027
+//4th Month, 31 Mar 2027
+//5th Month, 30 Apr 2027
+
 
 //1st month,
 //31 is selected and saved
@@ -110,8 +118,14 @@
 //That means saved day not relevant yet
 //Dateday is correct and accurate
 
-//First update saved date or dateDay
+//endDay is the number of days of prev curr month and year
+//newEndDay is the number of days of new curr month and year (m, y)
 
+//First update saved date or dateDay
+//First is new End day < then end day
+//If new end day is 28 < 30 then the selected day would need to change
+//If new end day >= 30 then the selected day does not need to change 
+//If new end day is == 30 
 
 
 
