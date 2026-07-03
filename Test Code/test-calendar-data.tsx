@@ -121,11 +121,62 @@
 //endDay is the number of days of prev curr month and year
 //newEndDay is the number of days of new curr month and year (m, y)
 
+//If temp bool is false
+//selected day pre change should be === saved day
+//If temp bool is true
+//Selected day not the same as saved day in prev current month
+//but that ofc can change
+
+//Scenario 1:
+
+//31 -> 31 -> 31 dec -> 30 jan -> 28 feb -> 30 
+
+//Date 31 nov to 31 dec
+
+//year: 2026, month: 10, dateDay: 31, prevMonth: false, tempBool: false, savedDay: 31 (from earlier months)
+//If temp bool is false
+//means saved day same w date day
+//set m = month, y = year
+
+//check first if prev month is true or false
+//since prev month is false
+// check if m === 11, as month is 10, increase to 11
+//month = 10, year = 2026, m = 11, y = 2026
+
+//get days in month of prev month (10)
+// end day of month 10 / nov == 31
+// new day of month 11 / dec == 31
+
+//temp bool is false
+//means saved day and date day is same
+//if(temp bool === false) -> if(saved day == selected day)
+
+//dont need to check for end day bc saved day and selected day is enough for end day
+//is new end day >= savedday or new end day < saved day
+
+//if new end day >= saved day
+// selected date = (y, m, dateday/savedday)
+//tempbool alr false and saved day === alr selected day
+//end
+
+//if new end day < saved day
+
+//move on 
+
+//first is selected day >= end day or selectedday < new end day
+//
+
+//Assuming
+//that means endDay is def >= selected day
+
+
 //First update saved date or dateDay
 //First is new End day < then end day
-//If new end day is 28 < 30 then the selected day would need to change
+//If new end day is 28  < 30 then the selected day would need to change
 //If new end day >= 30 then the selected day does not need to change 
-//If new end day is == 30 
+//If new end day is == 30 then selected day same
+//If new end day is more > 30 aka 31 > 30, 
+//then check if new end day is >= saved day,
 
 
 
