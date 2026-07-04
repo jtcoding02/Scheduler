@@ -135,50 +135,63 @@ function Calendar ({events, onCreateClick, onEventAction} : CalendarProps) {
         if(tempBool){
             //31 -> 30, 
             //if 28 
-            if(newEndDay < savedDay && newEndDay < endDay){
-                //TEMP BOOL REMAINS TRUE
-                //SAVED DAY IS TRUE
-                setSelectedDate(new Date(y, m, newEndDay));
-            }
-            //if 31 -> 28,
-            //if 30
-            else if(newEndDay < savedDay){
-                setSelectedDate(new Date(y, m, endDay));
-            }
-            //
-            //saved Day: 30 -> endDay -> 28
-            //if newEndDay => savedDay
-            //if newEndDay >
-            else{
-                setSelectedDate(new Date(y, m, savedDay));
+            // if(newEndDay < savedDay && newEndDay < endDay){
+            //     //TEMP BOOL REMAINS TRUE
+            //     //SAVED DAY IS TRUE
+            //     setSelectedDate(new Date(y, m, newEndDay));
+            // }
+            // //if 31 -> 28,
+            // //if 30
+            // else if(newEndDay < savedDay){
+            //     setSelectedDate(new Date(y, m, endDay));
+            // }
+            // //
+            // //saved Day: 30 -> endDay -> 28
+            // //if newEndDay => savedDay
+            // //if newEndDay >
+            // else{
+            //     setSelectedDate(new Date(y, m, savedDay));
+            //     setTempDayBool(false);
+            // }
+
+            if(newEndDay >= savedDay){
                 setTempDayBool(false);
+                setSelectedDate(new Date(y, m, savedDay));
+            }
+            else {
+                if(newEndDay >= dateDay){
+                    setSelectedDate(new Date(y, m, dateDay));
+                }
+                else{
+                    setSelectedDate(new Date(y, m, newEndDay));
+                }
             }
         }
 
         //If prev mon >= saved day
         else{
-            //check curr mon >= or < day
-            if(newEndDay < savedDay && newEndDay < endDay){
-                //TEMP BOOL REMAINS TRUE
-                //SAVED DAY IS TRUE
-                setTempDayBool(true);
-                setSelectedDate(new Date(y, m, newEndDay));
-            }
-            //if 31 -> 28,
-            //if 30
-            else if(newEndDay < savedDay){
-                setSelectedDate(new Date(y, m, endDay));
-            }
-            //
-            //saved Day: 30 -> endDay -> 28
-            //if newEndDay => savedDay
-            //if newEndDay >
-            else{
-                setSelectedDate(new Date(y, m, savedDay));
-                setTempDayBool(false);
-            }
-            changeSavedDay(dateDay);                                            
-            setSelectedDate(new Date(y, m, dateDay));
+            // //check curr mon >= or < day
+            // if(newEndDay < savedDay && newEndDay < endDay){
+            //     //TEMP BOOL REMAINS TRUE
+            //     //SAVED DAY IS TRUE
+            //     setTempDayBool(true);
+            //     setSelectedDate(new Date(y, m, newEndDay));
+            // }
+            // //if 31 -> 28,
+            // //if 30
+            // else if(newEndDay < savedDay){
+            //     setSelectedDate(new Date(y, m, endDay));
+            // }
+            // //
+            // //saved Day: 30 -> endDay -> 28
+            // //if newEndDay => savedDay
+            // //if newEndDay >
+            // else{
+            //     setSelectedDate(new Date(y, m, savedDay));
+            //     setTempDayBool(false);
+            // }
+            // changeSavedDay(dateDay);                                            
+            // setSelectedDate(new Date(y, m, dateDay));
         }
 
 
