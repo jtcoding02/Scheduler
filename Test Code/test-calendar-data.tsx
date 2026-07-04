@@ -160,6 +160,88 @@
 //end
 
 //if new end day < saved day
+//saved day alr === selected day
+// then check if new end day >= end day
+//or new end day < end day
+
+//like what current end day is 30
+//saved day is 29
+//selected day is 29 // date day
+//temp bool false bc last month end day is 31
+//new end day is 28
+
+//curr end day 28
+//saved day 20 
+//date day 20
+//new end day 14
+
+//TEMP BOOL FALSE FINAL START
+//since temp bool true means saved day != date day
+//since temp bool false means saved day == date day
+//therefore if saved day == date day,
+//curr end day must be at least >= saved day/date day
+//not curr end day < saved day/dateday
+//if new end day >= end day then its fine
+//if new end day < end day like
+//end day = 31
+//saved day = 30
+//date day = 30
+//new end day = 30
+//if new end day >= saved day
+//then ok saved day same
+//set selected date
+//if new end day < saved day
+//temp bool true
+//then new end day set as selected date
+//end
+//TEMP BOOL FALSE FINAL END
+
+//if temp is true
+//if 31 -> 30 -> 28 -> 30 -> 31
+//saved day originally 31
+//selected day originally 31
+//then selected day/date day will become 
+//31 -> 30 -> 28 -> 28 -> 31
+
+//same with
+//if 30 -> 29 -> 28 -> 29-> 30
+//saved day originally 30
+//selected day originally 30
+//then selected day/date day will become 
+//30 -> 29-> 28 -> 28 -> 30
+
+//TEMP BOOL TRUE START
+//if temp bool true
+//saved day != selected day
+//if new end day >= saved day
+//immediately temp bool false
+//set date as new y, m, saved day
+//if new end day < saved day
+//since end day def >= selected day
+//now new end day >= selected day
+//keep temp bool true
+//set date new y, m, selected day
+
+//if new end day < selected day
+//set date new y, m, new end day
+//end
+//TEMP BOOL TRUE END
+
+//if temp false
+//month = 10, year = 2026, m = 11, y = 2026, 
+//if new end day >= saved 
+
+//eg: new end day > 29
+//saved day stay same
+//setdate(2026,11,savedday/dateday)
+
+//if new end day < saved day
+//for eg,  28 < 29
+//
+
+
+//if new end day >= end day
+
 
 //move on 
 

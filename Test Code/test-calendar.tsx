@@ -1,4 +1,9 @@
-
+const today = new Date();
+    const day = today.getDate();  
+const [selectedDate, setSelectedDate] = useState(today);
+//const [selectedDate, setSelectedDate] = useState(currentDate);
+const [selectedDay, setSelectedDay] = useState(day);
+const [tempDayBool, setTempDayBool] = useState<boolean>(false); 
 
 const changeSelectedMonth = 
     (year: number, month: number, dateDay: number, 
@@ -52,9 +57,10 @@ const changeSelectedMonth =
         if(tempBool){
             //31 -> 30, 
             //if 28 
-            if(newEndDay < savedDay && newEndDay < endDay){
+            if(newEndDay >= savedDay){
                 //TEMP BOOL REMAINS TRUE
                 //SAVED DAY IS TRUE
+                setTempDayBool(false);
                 setSelectedDate(new Date(y, m, newEndDay));
             }
             //if 31 -> 28,
