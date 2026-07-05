@@ -192,6 +192,15 @@ function Calendar ({events, onCreateClick, onEventAction} : CalendarProps) {
             // }
             // changeSavedDay(dateDay);                                            
             // setSelectedDate(new Date(y, m, dateDay));
+
+            //temp bool false
+            if(newEndDay >= endDay){
+                setSelectedDate(new Date(y, m, savedDay));
+            }
+            else{
+                //newEndDay < endDay
+                setTempDayBool(true);
+                setSelectedDate(new Date(y, m, newEndDay));
         }
 
 
