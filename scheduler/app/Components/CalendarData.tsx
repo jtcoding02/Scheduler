@@ -71,9 +71,21 @@ function CalendarData({...props}){
     
     const columnNum = 7;
     const [numOfRows, setNumOfRows] = useState()
-    const rowsNum = getRowsNum(daysInMonth, columnNum);
+    const totalSlotsNeeded = titleDay + daysInMonth;
+    //const rowsNum = getRowsNum(daysInMonth, columnNum);
+    const rowsNum = Math.ceil(totalSlotsNeeded / columnNum);
     const numberOfDays = rowsNum * columnNum;
     const currentDaysArray = [];
+
+    // 👇 ADD YOUR CONSOLE LOG HERE 👇
+    console.log(
+        `📅 Month changed! \n` +
+        `   Month/Year: ${currentMonth + 1}/${currentYear} \n` +
+        `   Starts on Weekday Index: ${titleDay} \n` +
+        `   Days in Month: ${daysInMonth} \n` +
+        `   Total Layout Cells Needed: ${totalSlotsNeeded} \n` +
+        `   Updating Grid Rows To: ${rowsNum}`
+    );
 
     //If month starts on Tuesday (2), go back 2 days to previous month
     const startDate = new Date(firstDayOfMonth);
