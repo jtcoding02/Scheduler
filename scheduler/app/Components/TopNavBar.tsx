@@ -33,7 +33,7 @@ const TopNavBar = () => {
 
                             <div className = "navbar-btn-div flex align-center items-center text-center justify-center">
                                 <button className = "navbar-btn flex text-center align-center items-center  justify-center p-2">
-                                     <p className="navbar-btn-txt flex text-center font-mono font-bold  justify-center">VIDEO</p>
+                                     <p className="navbar-btn-txt flex text-center font-mono font-bold  justify-center">MEDIA</p>
                                 </button>
                             </div>
 
