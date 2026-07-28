@@ -56,8 +56,8 @@ const CalendarEvents = ({ d, m, y, events, isCollapsed, onToggle, onClose, onEve
         <div className="flex flex-col h-full w-full">
             <div className="detail-header-div flex p-4 justify-between items-center border-b border-gray-200 bg-white">
                 <div className="detail-header-left flex items-center gap-4">
-                    <button onClick={onToggle} className="detail-collapse-btn p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
-                        Close
+                    <button onClick={onToggle} className="size-10 flex justify-center items-center rounded-full bg-black text-white hover:bg-gray-800 transition-colors shadow-md">
+                        <ArrowForwardIosIcon className="size-5" />
                     </button>
                     <p className="text-xl text-black font-bold">{d} {m} {y}</p>
                 </div>

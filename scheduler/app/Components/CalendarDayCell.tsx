@@ -19,8 +19,10 @@ const CalendarDayCell = ({ dateObj, events, changeSelectedDay }: CalendarDayCell
         if (!cellRef.current || !headerRef.current) return;
 
         const calculateFittingEvents = () => {
-            const cellHeight = cellRef.current!.clientHeight;
-            const headerHeight = headerRef.current!.clientHeight;
+            if (!cellRef.current || !headerRef.current) return;
+
+            const cellHeight = cellRef.current.clientHeight;
+            const headerHeight = headerRef.current.clientHeight;
 
             const verticalPadding = 16; 
             const availableHeight = cellHeight - headerHeight - verticalPadding;

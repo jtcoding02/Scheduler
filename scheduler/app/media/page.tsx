@@ -1,14 +1,12 @@
 //import Image from "next/image";
 
 import React from 'react';
-import MediaPage from '.././MediaPage';
-import './globals.css';
-import './Styling/style.css';
+import MediaPage from '../MediaPage';
 
 
 function Media() {
     return (
-        <div>
+        <div className="min-h-full flex flex-col">
             <MediaPage />
         </div>
     );

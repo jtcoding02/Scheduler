@@ -1,7 +1,5 @@
 import React from 'react';
 import Image from 'next/image';
-import '.././globals.css';
-import '../Styling/style.css';
 import AccountIconSVG from '../Assets/AccountIcon.svg';
 import AccountIconPNG from '../Assets/AccountIcon.png';
 import Link from "next/link";
@@ -14,7 +12,7 @@ const TopNavBar = () => {
             <nav className = "navbar h-full w-full flex p-4 justify-between bg-[#1532A8] items-center">
                 <div className="navbar-left h-full flex justify-center items-center">
 
-                    <Link href="/">
+                    <Link href="../">
                         <div className="navbar-logo-div pr-2 items-center">
                           <div className="navbar-logo p-1">
                             <svg className="logo size-[1.5rem] rounded-xs p-1 bg-[#ff3b9a]" ></svg>
@@ -35,7 +33,7 @@ const TopNavBar = () => {
                                 <li>
                                     <div className = "navbar-btn-div">
                                     
-                                        <Link href="/" className = "navbar-btn flex align-center items-center p-2">
+                                        <Link href="../" className = "navbar-btn flex align-center items-center p-2">
                                             <p className="navbar-btn-txt font-bold font-mono">HOME</p>
                                         </Link> 
                                     </div>
@@ -44,7 +42,7 @@ const TopNavBar = () => {
                                 <li>
                                     <div className = "navbar-btn-div flex align-center items-center text-center justify-center">
                                     
-                                        <Link href="/media"  className = "navbar-btn flex text-center align-center items-center  justify-center p-2">
+                                        <Link href="../media"  className = "navbar-btn flex text-center align-center items-center  justify-center p-2">
                                             <p className="navbar-btn-txt flex text-center font-mono font-bold  justify-center">MEDIA</p>
                                         </Link>
                                     </div>

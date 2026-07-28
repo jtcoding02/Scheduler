@@ -30,7 +30,7 @@ const CalendarEventCard = ({ event, onAction }: CalendarEventCardProps) => {
     return(
 <div className="event-card-div flex flex-col bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md hover:border-blue-200 transition-all">
             <div className="flex justify-between items-start gap-3 mb-2">
-                <h3 className="font-bold text-[#1532A8] text-lg leading-tight break-words flex-1">
+                <h3 className="font-bold text-black text-lg leading-tight break-words flex-1">
                     {event.title}
                 </h3>
                 

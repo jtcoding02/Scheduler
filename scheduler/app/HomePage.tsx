@@ -1,7 +1,7 @@
 "use client"; 
 import React, {Component, useState} from 'react';
-import './globals.css';
-import './Styling/style.css';
+// import './globals.css';
+// import './Styling/style.css';
 import TopNavBar from './Components/TopNavBar';
 import MenuBar from './Components/MenuBar';
 import Calendar from './Components/Calendar';

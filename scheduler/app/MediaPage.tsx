@@ -1,9 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
-import '.././globals.css';
-import '../Styling/style.css';
-import AccountIconSVG from '../Assets/AccountIcon.svg';
-import AccountIconPNG from '../Assets/AccountIcon.png';
+import './globals.css';
+import './Styling/style.css';
+import AccountIconSVG from './Assets/AccountIcon.svg';
+import AccountIconPNG from './Assets/AccountIcon.png';
 import TopNavBar from './Components/TopNavBar';
 
 interface MediaPageProps{
@@ -19,9 +19,11 @@ function MediaPage(){
                 </div>
                 <div className="media-header-div">
                     <div className="media-header">
-                        <p className="media-title font-bold p-4 text-3xl">Media</p>
+                        <p className="media-title font-bold p-4 text-3xl text-black">Media</p>
                     </div>
                 </div>
+
+                
             </div>
         </div>
     )

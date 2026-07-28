@@ -1,8 +1,8 @@
 "use client"; 
 import React, {Component, useState} from 'react';
 import Image from 'next/image';
-import '.././globals.css';
-import '../Styling/style.css';
+// import '.././globals.css';
+// import '../Styling/style.css';
 import AddButtonSVG from '../Assets/AddButton.svg';
 
 

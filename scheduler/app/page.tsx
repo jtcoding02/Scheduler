@@ -2,10 +2,9 @@
 
 import React from 'react';
 import HomePage from './HomePage';
-import RootLayout from "./layout";
+//import RootLayout from "./layout";
 import MediaPage from './MediaPage';
-import './globals.css';
-import './Styling/style.css';
+
 
 
 function App() {
