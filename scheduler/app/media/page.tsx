@@ -1,22 +1,20 @@
 //import Image from "next/image";
 
 import React from 'react';
-import HomePage from './HomePage';
-import RootLayout from "./layout";
-import MediaPage from './MediaPage';
+import MediaPage from '.././MediaPage';
 import './globals.css';
 import './Styling/style.css';
 
 
-function App() {
+function Media() {
     return (
         <div>
-            <HomePage />
+            <MediaPage />
         </div>
     );
 }
 
-export default App;
+export default Media;
 
 // export default function Home() {
 //   return (
