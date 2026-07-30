@@ -28,30 +28,30 @@ const CalendarEventCard = ({ event, onAction }: CalendarEventCardProps) => {
     const endTime = formatTime(event.endDate);
 
     return(
-<div className="event-card-div flex flex-col bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md hover:border-blue-200 transition-all">
-            <div className="flex justify-between items-start gap-3 mb-2">
+<div className="event-card-div flex flex-col bg-[#F7F7F7] border-[0.2rem] border-[#8B8B8B] rounded-xl p-4 shadow-sm hover:shadow-md hover:border-blue-200 transition-all">
+            <div className="flex justify-between  gap-3 mb-2 align-center items-center">
                 <h3 className="font-bold text-black text-lg leading-tight break-words flex-1">
                     {event.title}
                 </h3>
                 
-                <div className="flex items-center gap-1 flex-shrink-0 text-gray-500">
+                <div className="flex items-center gap-1 flex-shrink-0">
                     <button 
                         onClick={() => onAction('view')}
-                        className="p-1.5 hover:bg-gray-100 rounded-md hover:text-[#1532A8] transition-colors" 
+                        className="p-1.5 hover:bg-gray-100  text-white rounded-md hover:text-gray-500 transition-colors bg-[#1532A8]" 
                         title="View Details"
                     >
-                        <VisibilityIcon className="size-5" />
+                        <VisibilityIcon className="size-4" />
                     </button>
                     <button 
                         onClick={() => onAction('edit')}
-                        className="p-1.5 hover:bg-gray-100 rounded-md hover:text-green-600 transition-colors" 
+                        className="p-1.5 hover:bg-gray-100 rounded-md hover:text-green-600 transition-colors bg-white ring-inset ring-[0.2rem] ring-[#1532A8] text-[#1532A8]" 
                         title="Edit Event"
                     >
                         <EditIcon className="size-5" />
                     </button>
                     <button 
                         onClick={() => onAction('delete')}
-                        className="p-1.5 hover:bg-gray-100 rounded-md hover:text-red-600 transition-colors" 
+                        className="p-1.5 hover:bg-gray-100 rounded-md hover:text-red-600 transition-colors bg-red-600" 
                         title="Delete Event"
                     >
                         <DeleteIcon className="size-5" />
@@ -59,14 +59,21 @@ const CalendarEventCard = ({ event, onAction }: CalendarEventCardProps) => {
                 </div>
             </div>
 
-            <div className="text-sm font-semibold text-gray-600 bg-gray-50 rounded-md px-2 py-1 w-fit border border-gray-100 mb-1">
+            <div className="text-md font-semibold text-black rounded-md w-fit border border-gray-100 mb-1">
                 {startTime} - {endTime}
             </div>
 
             {event.description && (
-                <div className="text-sm text-gray-500 mt-3 pt-3 border-t border-gray-100 leading-relaxed">
-                    {event.description}
+                <div className='py-2'>
+                    <div className=
+                    'text-bold text-black font-bold'>
+                    Description:
+                    </div>
+                    <div className="text-sm text-black mt-3  border-t border-gray-100 leading-relaxed">
+                        {event.description}
+                    </div>
                 </div>
+                
             )}
         </div>
     )

@@ -9,6 +9,7 @@ import MediaPage from './MediaPage';
 
 function App() {
     return (
+        
         <div>
             <HomePage />
         </div>
