@@ -41,9 +41,9 @@ const ViewEventDetail = ({ event, onClose, onEditClick, onDeleteClick }: ViewEve
         <div className="modal-div flex flex-col min-w-[35rem] p-6 bg-white text-black text-left">
             {/* Header Area */}
             <div className="modal-header-div flex justify-between items-center pb-4 border-b border-gray-200">
-                <div className="modal-title-div">
-                    <p className="modal-title text-2xl font-bold text-[#1532A8]">
-                        Event Details
+                <div className="modal-title-div text-2xl">
+                    <p className="font-bold text-black">
+                        View Event Details
                     </p>
                 </div>
                 <div className="modal-close-div">
@@ -61,24 +61,30 @@ const ViewEventDetail = ({ event, onClose, onEditClick, onDeleteClick }: ViewEve
             {/* Event Summary Parameters */}
             <div className="modal-content-div flex flex-col gap-5 py-6">
                 {/* Title */}
-                <div className="flex flex-col gap-1">
-                    <span className="text-xs font-bold uppercase tracking-wider text-gray-400">Event Title</span>
-                    <p className="text-xl font-semibold text-gray-900 bg-gray-50 p-3 rounded-lg border border-gray-100">
-                        {event.title || "Untitled Event"}
-                    </p>
+                <div className="flex flex-col gap-1 title-group-div">
+                    <div className="title-span-div">
+                        <span className="text-xl font-bold tracking-wider text-black">Title</span>
+                    </div>
+                    <div className="title-div pt-2">
+                        <p className="text-md text-black bg-gray-50 p-3 rounded-lg border-[0.1rem] border-gray-400">
+                            {event.title || "Untitled Event"}
+                        </p>
+                    </div>
+                    
+                    
                 </div>
 
                 {/* Timeline info */}
                 <div className="grid grid-cols-2 gap-4">
                     <div className="flex flex-col gap-1">
-                        <span className="text-xs font-bold uppercase tracking-wider text-gray-400">Starts At</span>
-                        <p className="text-base font-medium text-gray-800 bg-gray-50 p-3 rounded-lg border border-gray-100">
+                        <span className="modal-title">Starts At</span>
+                        <p className="modal-field">
                             {formatDateTime(event.startDate)}
                         </p>
                     </div>
                     <div className="flex flex-col gap-1">
-                        <span className="text-xs font-bold uppercase tracking-wider text-gray-400">Ends At</span>
-                        <p className="text-base font-medium text-gray-800 bg-gray-50 p-3 rounded-lg border border-gray-100">
+                        <span className="modal-title">Ends At</span>
+                        <p className="modal-field">
                             {formatDateTime(event.endDate)}
                         </p>
                     </div>

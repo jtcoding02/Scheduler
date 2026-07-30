@@ -5,6 +5,7 @@
 }
 
 /*Modal Styling*/
+
 .modal-buttons-div{
   display: flex;
   justify-content: space-between;
@@ -31,6 +32,30 @@
   font-weight: bold;
   color: black;
 }
+
+.modal-title-div{
+  color: black;
+}
+
+.modal-title{
+  color: black;
+  font-weight: bold;
+  font-size: 1.125rem;
+  line-height: calc(1.75/1.125);
+  letter-spacing: 0.05em;
+}
+
+/*text-md text-black bg-gray-50 p-3 rounded-lg border-[0.1rem] border-gray-400*/
+.modal-field{
+  font-size: 1rem;
+  color: black;
+  background-color: #f9fafb;
+  border: 0.1rem solid #9ca3af;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+}
+
+/*Navbar*/
 
 .navbar-btn-txt{
   font-size: 1rem;

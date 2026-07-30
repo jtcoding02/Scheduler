@@ -64,7 +64,7 @@ function HomePage(){
 
             {/* ACTION ROUTER OVERLAY PANEL */}
             {activeModal.mode && activeModal.event && (
-                <div className="fixed inset-0 bg-black/50 backdrop-blur-xs flex justify-center items-center z-50 animate-fadeIn">
+                <div className="fixed inset-0 bg-black/50 backdrop-blur-xs flex justify-center items-center z-50 animate-fadeIn p-8">
                     <div className="bg-white rounded-xl shadow-2xl overflow-hidden border border-gray-200">
                         {activeModal.mode === 'view' && (
                             <ViewEventDetail 
