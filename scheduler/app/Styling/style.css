@@ -55,6 +55,18 @@
   border-radius: 0.5rem;
 }
 
+/*text-base text-gray-700 bg-gray-50 p-3 rounded-lg border border-gray-100 min-h-[6rem] whitespace-pre-wrap*/
+.modal-description{
+  font-size: 1rem;
+  color: black;
+  background-color: #f9fafb;
+  border: 0.1rem solid #9ca3af;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  min-height: 6rem;
+  white-space: pre-wrap;
+}
+
 /*Navbar*/
 
 .navbar-btn-txt{

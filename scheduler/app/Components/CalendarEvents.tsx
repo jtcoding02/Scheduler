@@ -54,7 +54,7 @@ const CalendarEvents = ({ d, m, y, events, isCollapsed, onToggle, onClose, onEve
     
     return (
         <div className="flex flex-col h-full w-full">
-            <div className="detail-header-div flex p-4 justify-between items-center border-b border-gray-200 bg-white">
+            <div className="detail-header-div flex p-4 justify-between items-center border-b border-white bg-white">
                 <div className="detail-header-left flex items-center gap-4">
                     <button onClick={onToggle} className="size-10 flex justify-center items-center rounded-full bg-black text-white hover:bg-gray-800 transition-colors shadow-md">
                         <ArrowForwardIosIcon className="size-5" />
@@ -66,7 +66,7 @@ const CalendarEvents = ({ d, m, y, events, isCollapsed, onToggle, onClose, onEve
                 </button>
             </div>
             
-            <div className="events-list-div flex-1 overflow-y-auto p-4 flex flex-col gap-4">
+            <div className="events-list-div flex-1 overflow-y-auto p-4 flex flex-col gap-4 bg-white">
                 {events.length > 0 ? (
                     events.map((e) => (
                         <CalendarEventCard 

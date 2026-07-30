@@ -66,7 +66,7 @@ const ViewEventDetail = ({ event, onClose, onEditClick, onDeleteClick }: ViewEve
                         <span className="text-xl font-bold tracking-wider text-black">Title</span>
                     </div>
                     <div className="title-div pt-2">
-                        <p className="text-md text-black bg-gray-50 p-3 rounded-lg border-[0.1rem] border-gray-400">
+                        <p className="modal-field">
                             {event.title || "Untitled Event"}
                         </p>
                     </div>
@@ -92,39 +92,43 @@ const ViewEventDetail = ({ event, onClose, onEditClick, onDeleteClick }: ViewEve
 
                 {/* Description info */}
                 <div className="flex flex-col gap-1">
-                    <span className="text-xs font-bold uppercase tracking-wider text-gray-400">Description</span>
-                    <div className="text-base text-gray-700 bg-gray-50 p-3 rounded-lg border border-gray-100 min-h-[6rem] whitespace-pre-wrap">
+                    <span className="modal-title pb-2">Description</span>
+                    <div className="modal-description">
                         {event.description || <span className="italic text-gray-400">No additional details supplied.</span>}
                     </div>
                 </div>
             </div>
 
             {/* Action Toolbar */}
-            <div className="modal-buttons-div flex justify-between items-center mt-4 pt-4 border-t border-gray-200">
-                <button 
-                    type="button"
-                    onClick={onDeleteClick}
-                    className="px-5 py-2.5 rounded-lg border-2 border-red-600 text-red-600 hover:bg-red-50 transition-all font-bold text-sm"
-                >
-                    DELETE
-                </button>
-                
-                <div className="flex gap-3">
-                    <button 
-                        type="button"
-                        onClick={onClose}
-                        className="px-5 py-2.5 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-100 transition-all font-semibold text-sm"
-                    >
-                        CLOSE
-                    </button>
+            <div className="modal-buttons-div flex justify-between items-center mt-4 pt-4 border-t border-gray-200 w-full">
+
+                <div className="flex gap-3 w-full">
+                    
                     <button 
                         type="button"
                         onClick={onEditClick}
-                        className="px-5 py-2.5 rounded-lg bg-[#1532A8] hover:bg-[#2546c4] text-white transition-all font-bold text-sm shadow-md"
+                        className="w-full px-5 py-2.5 rounded-lg bg-[#1532A8] hover:bg-[#2546c4] text-white transition-all font-bold text-sm shadow-md"
                     >
                         EDIT
                     </button>
                 </div>
+
+                <div className="flex gap-3 w-full">
+                    <button 
+                    type="button"
+                    onClick={onDeleteClick}
+                    className="w-full x-5 py-2.5 rounded-lg border-2 border-red-600 text-red-600 hover:bg-red-50 transition-all font-bold text-sm"
+                >
+                        DELETE
+                    </button>
+                    
+                </div>
+
+                
+
+                
+                
+                
             </div>
         </div>
     );

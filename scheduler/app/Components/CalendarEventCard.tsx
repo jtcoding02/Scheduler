@@ -54,7 +54,7 @@ const CalendarEventCard = ({ event, onAction }: CalendarEventCardProps) => {
                         className="p-1.5 hover:bg-gray-100 rounded-md hover:text-red-600 transition-colors bg-red-600" 
                         title="Delete Event"
                     >
-                        <DeleteIcon className="size-5" />
+                        <DeleteIcon className="size-5 text-white"/>
                     </button>
                 </div>
             </div>
