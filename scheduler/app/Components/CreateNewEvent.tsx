@@ -99,7 +99,7 @@ const CreateNewEvent = ({ events, onClose, onSave }: CreateNewEventProps) => {
         <div className="modal-div flex flex-col min-w-[35rem] p-6 bg-white text-black text-left">
             <div className="modal-header-div flex justify-between items-center pb-4 border-b border-gray-200">
                 <div className="modal-title-div">
-                    <p className="modal-title text-2xl font-bold text-[#1532A8]">
+                    <p className="text-2xl font-bold text-black">
                         Create New Event
                     </p>
                 </div>
@@ -118,7 +118,12 @@ const CreateNewEvent = ({ events, onClose, onSave }: CreateNewEventProps) => {
             <form onSubmit={handleCreate} className="modal-content-div flex flex-col gap-4 py-4">
                 {/* Title */}
                 <div className="flex flex-col gap-1">
-                    <label className="font-semibold text-sm text-gray-700">Title</label>
+                    <label className="modal-title font-semibold text-sm text-gray-700">
+                        Title
+                        <span className="text-red-700">
+                            *
+                        </span>
+                    </label>
                     <input 
                         type="text"
                         value={title}
@@ -130,7 +135,12 @@ const CreateNewEvent = ({ events, onClose, onSave }: CreateNewEventProps) => {
 
                 {/* Start Time Section */}
                 <div className="flex flex-col gap-1">
-                    <label className="font-semibold text-sm text-gray-700">Start Time</label>
+                    <label className="modal-title font-semibold text-sm text-gray-700">
+                        Start Time
+                        <span className="text-red-700">
+                            *
+                        </span>
+                    </label>
                     <div className="flex gap-2">
                         <input 
                             type="date"

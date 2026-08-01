@@ -47,13 +47,15 @@ const ViewEventDetail = ({ event, onClose, onEditClick, onDeleteClick }: ViewEve
                     </p>
                 </div>
                 <div className="modal-close-div">
+                    {/* bg-red-600 text-white hover:bg-red-700 */}
                     <button 
                         type="button"
                         onClick={onClose}
-                        className="size-10 flex justify-center items-center rounded-full bg-red-600 text-white hover:bg-red-700 transition-colors shadow-md" 
+                        
+                        className="modal-close-btn bg-black text-white hover:bg-gray-700 transition-colors shadow-md" 
                         title="Close Panel"
                     >
-                        <CloseIcon className="size-6" />
+                        <CloseIcon className="size-6 font-bold" />
                     </button>
                 </div>
             </div>
@@ -100,9 +102,9 @@ const ViewEventDetail = ({ event, onClose, onEditClick, onDeleteClick }: ViewEve
             </div>
 
             {/* Action Toolbar */}
-            <div className="modal-buttons-div flex justify-between items-center mt-4 pt-4 border-t border-gray-200 w-full">
+            <div className="rounded-lg flex justify-between items-center py-2 w-full">
 
-                <div className="flex gap-3 w-full">
+                <div className="flex gap-3 w-full pr-4">
                     
                     <button 
                         type="button"
@@ -117,7 +119,7 @@ const ViewEventDetail = ({ event, onClose, onEditClick, onDeleteClick }: ViewEve
                     <button 
                     type="button"
                     onClick={onDeleteClick}
-                    className="w-full x-5 py-2.5 rounded-lg border-2 border-red-600 text-red-600 hover:bg-red-50 transition-all font-bold text-sm"
+                    className="w-full x-5 py-2.5 rounded-lg bg-red-600 text-white hover:bg-red-700 transition-all font-bold text-sm"
                 >
                         DELETE
                     </button>

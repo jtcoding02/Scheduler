@@ -41,8 +41,8 @@
   color: black;
   font-weight: bold;
   font-size: 1.125rem;
-  line-height: calc(1.75/1.125);
-  letter-spacing: 0.05em;
+  /* line-height: calc(1.75/1.125); */
+  /* letter-spacing: 0.05em; */
 }
 
 /*text-md text-black bg-gray-50 p-3 rounded-lg border-[0.1rem] border-gray-400*/
@@ -65,6 +65,18 @@
   border-radius: 0.5rem;
   min-height: 6rem;
   white-space: pre-wrap;
+}
+
+/*size-10 flex justify-center items-center rounded-full bg-red-600 text-white hover:bg-red-700 transition-colors shadow-md*/
+.modal-close-btn{
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100rem;
+  color: white;
+  /*bg-red-600 text-white hover:bg-red-700 transition-colors*/
 }
 
 /*Navbar*/
