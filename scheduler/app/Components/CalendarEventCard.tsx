@@ -37,7 +37,7 @@ const CalendarEventCard = ({ event, onAction }: CalendarEventCardProps) => {
                 <div className="flex items-center gap-1 flex-shrink-0">
                     <button 
                         onClick={() => onAction('view')}
-                        className="p-1.5 hover:bg-gray-100  text-white rounded-md hover:text-gray-500 transition-colors bg-[#1532A8]" 
+                        className="p-1.5 hover:bg-[#1B2D78] text-white rounded-md transition-colors bg-[#1532A8]" 
                         title="View Details"
                     >
                         <VisibilityIcon className="size-4" />
@@ -51,7 +51,7 @@ const CalendarEventCard = ({ event, onAction }: CalendarEventCardProps) => {
                     </button>
                     <button 
                         onClick={() => onAction('delete')}
-                        className="p-1.5 hover:bg-gray-100 rounded-md hover:text-red-600 transition-colors bg-red-600" 
+                        className="p-1.5 hover:bg-red-800 rounded-md transition-colors bg-red-600" 
                         title="Delete Event"
                     >
                         <DeleteIcon className="size-5 text-white"/>

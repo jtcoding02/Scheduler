@@ -83,8 +83,7 @@ function HomePage(){
                         )}
                         {activeModal.mode === 'delete' && (
                             <DeleteEvent 
-                                eventId={activeModal.event.id} 
-                                eventTitle={activeModal.event.title} 
+                                event = {activeModal.event}                                               
                                 onClose={() => setActiveModal({ mode: null, event: null })}
                                 onConfirmDelete={handleDeleteEvent}
                             />
