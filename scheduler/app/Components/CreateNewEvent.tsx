@@ -118,19 +118,26 @@ const CreateNewEvent = ({ events, onClose, onSave }: CreateNewEventProps) => {
             <form onSubmit={handleCreate} className="modal-content-div flex flex-col gap-4 py-4">
                 {/* Title */}
                 <div className="flex flex-col gap-1">
-                    <label className="modal-title font-semibold text-sm text-gray-700">
+                    <div className="">
+                        <label className="modal-title font-semibold text-sm text-gray-700">
                         Title
                         <span className="text-red-700">
                             *
                         </span>
-                    </label>
-                    <input 
+                        </label>               
+                    </div>
+                    
+                    <div className="">
+                        <input 
                         type="text"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
-                        className="w-full border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1532A8]"
+                        className="w-full modal-field"
+                        
                         placeholder="Enter title here..."
-                    />
+                        />
+                    </div>
+                    
                 </div>
 
                 {/* Start Time Section */}
@@ -146,62 +153,73 @@ const CreateNewEvent = ({ events, onClose, onSave }: CreateNewEventProps) => {
                             type="date"
                             value={startDate}
                             onChange={(e) => setStartDate(e.target.value)}
-                            className="flex-1 border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1532A8]"
+                            className="modal-field flex-1 border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1532A8]"
                         />
                         <input 
                             type="time"
                             value={startTime}
                             onChange={(e) => setStartTime(e.target.value)}
-                            className="flex-1 border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1532A8]"
+                            className="modal-field flex-1 border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1532A8]"
                         />
                     </div>
                 </div>
 
                 {/* End Time Section */}
                 <div className="flex flex-col gap-1">
-                    <label className="font-semibold text-sm text-gray-700">End Time</label>
+                    <label className="modal-title font-semibold text-sm text-gray-700">
+                        End Time
+                        <span className="text-red-700">
+                            *
+                        </span>
+                    </label>
                     <div className="flex gap-2">
                         <input 
                             type="date"
                             value={endDate}
                             onChange={(e) => setEndDate(e.target.value)}
-                            className="flex-1 border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1532A8]"
+                            className="modal-field flex-1 border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1532A8]"
                         />
                         <input 
                             type="time"
                             value={endTime}
                             onChange={(e) => setEndTime(e.target.value)}
-                            className="flex-1 border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1532A8]"
+                            className="modal-field flex-1 border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1532A8]"
                         />
                     </div>
                 </div>
 
                 {/* Description */}
                 <div className="flex flex-col gap-1">
-                    <label className="font-semibold text-sm text-gray-700">Description (Optional)</label>
+                    <label className="modal-title font-semibold text-sm text-gray-700 pb-1">Description (Optional)</label>
                     <textarea 
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
-                        className="w-full border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1532A8] min-h-[4rem] resize-y"
+                        className="modal-field w-full border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1532A8] min-h-[4rem] resize-y"
                         placeholder="Write a description here if needed..."
                     />
                 </div>
 
                 {/* Submission Action Grid */}
-                <div className="modal-buttons-div flex justify-end gap-3 mt-4 pt-4 border-t border-gray-200">
-                    <button 
-                        type="button"
-                        onClick={handleClear}
-                        className="px-5 py-2.5 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-100 transition-all font-semibold text-sm"
-                    >
-                        CLEAR
-                    </button>
-                    <button 
+                <div className="w-full flex justify-end gap-3 pt-4 ">
+                    <div className="w-full flex">
+                        <button 
                         type="submit"
-                        className="px-5 py-2.5 rounded-lg bg-[#1532A8] hover:bg-[#2546c4] text-white transition-all font-bold text-sm shadow-md"
+                        className="w-full px-5 py-2.5 rounded-lg bg-[#1532A8] hover:bg-[#2546c4] text-white transition-all font-bold text-sm shadow-md"
                     >
                         CREATE
-                    </button>
+                        </button>
+                    </div>
+                    <div className="flex w-full">
+                        <button 
+                        type="button"
+                        onClick={handleClear}
+                        className="w-full px-5 py-2.5 rounded-lg border-4 border-[#1532A8] text-[#1532A8] hover:bg-gray-100 transition-all font-semibold text-sm"
+                    >
+                        CLEAR
+                        </button>
+                    </div>
+                    
+                    
                 </div>
             </form>
 
