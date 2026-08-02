@@ -106,8 +106,8 @@ const EditEventDetail = ({ event, onClose, onUpdate }: EditEventDetailProps) => 
         <div className="modal-div flex flex-col min-w-[35rem] p-6 bg-white text-black text-left">
             <div className="modal-header-div flex justify-between items-center pb-4 border-b border-gray-200">
                 <div className="modal-title-div">
-                    <p className="modal-title text-2xl font-bold text-[#1532A8]">
-                        Edit Event Context
+                    <p className=" text-black text-2xl font-bold text-[#1532A8]">
+                        Edit Event
                     </p>
                 </div>
                 <div className="modal-close-div">
@@ -124,78 +124,99 @@ const EditEventDetail = ({ event, onClose, onUpdate }: EditEventDetailProps) => 
             <form onSubmit={handleFormSubmit} className="modal-content-div flex flex-col gap-4 py-4">
                 {/* Title element */}
                 <div className="flex flex-col gap-1">
-                    <label className="font-semibold text-sm text-gray-700">Title</label>
+                    <label className="modal-title font-semibold text-sm text-gray-700">
+                        Title
+                        <span className="text-red-700">
+                            *
+                        </span>
+                    </label>
                     <input 
                         type="text"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
-                        className="w-full border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1532A8]"
+                        className="modal-field w-full border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1532A8]"
                     />
                 </div>
 
                 {/* Starting Context bounds */}
                 <div className="flex flex-col gap-1">
-                    <label className="font-semibold text-sm text-gray-700">Start Time</label>
+                    <label className="modal-title font-semibold text-sm text-gray-700">
+                        Start Time
+                        <span className="text-red-700">
+                            *
+                        </span>
+                    </label>
                     <div className="flex gap-2">
                         <input 
                             type="date"
                             value={startDate}
                             onChange={(e) => setStartDate(e.target.value)}
-                            className="flex-1 border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1532A8]"
+                            className="modal-field flex-1 border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1532A8]"
                         />
                         <input 
                             type="time"
                             value={startTime}
                             onChange={(e) => setStartTime(e.target.value)}
-                            className="flex-1 border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1532A8]"
+                            className="modal-field flex-1 border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1532A8]"
                         />
                     </div>
                 </div>
 
                 {/* End Context bounds */}
                 <div className="flex flex-col gap-1">
-                    <label className="font-semibold text-sm text-gray-700">End Time</label>
+                    <label className="modal-title font-semibold text-sm text-gray-700">
+                        End Time
+                        <span className="text-red-700">
+                            *
+                        </span>
+                    </label>
                     <div className="flex gap-2">
                         <input 
                             type="date"
                             value={endDate}
                             onChange={(e) => setEndDate(e.target.value)}
-                            className="flex-1 border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1532A8]"
+                            className="modal-field flex-1 border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1532A8]"
                         />
                         <input 
                             type="time"
                             value={endTime}
                             onChange={(e) => setEndTime(e.target.value)}
-                            className="flex-1 border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1532A8]"
+                            className="modal-field flex-1 border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1532A8]"
                         />
                     </div>
                 </div>
 
                 {/* Content description wrapper */}
                 <div className="flex flex-col gap-1">
-                    <label className="font-semibold text-sm text-gray-700">Description (Optional)</label>
+                    <label className="modal-title font-semibold text-sm text-gray-700 pb-1">Description (Optional)</label>
                     <textarea 
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
-                        className="w-full border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1532A8] min-h-[4rem] resize-y"
+                        className="modal-field w-full border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1532A8] min-h-[4rem] resize-y"
                     />
                 </div>
 
                 {/* Action buttons */}
-                <div className="modal-buttons-div flex justify-end gap-3 mt-4 pt-4 border-t border-gray-200">
-                    <button 
+                <div className="w-full flex justify-end gap-3 pt-4 ">
+                    <div className="w-full">
+                        <button 
+                        type="submit"
+                        className="w-full px-5 py-2.5 rounded-lg bg-[#1532A8] hover:bg-[#2546c4] text-white transition-all font-bold text-sm shadow-md"
+                    >
+                        SAVE
+                        </button>
+                    </div>
+                    <div className="w-full">
+                        <button 
                         type="button"
                         onClick={onClose}
-                        className="px-5 py-2.5 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-100 transition-all font-semibold text-sm"
+                        className="w-full px-5 py-2.5 rounded-lg text-white bg-red-600 hover:bg-red-500 transition-all font-semibold text-sm"
                     >
-                        CANCEL
-                    </button>
-                    <button 
-                        type="submit"
-                        className="px-5 py-2.5 rounded-lg bg-[#1532A8] hover:bg-[#2546c4] text-white transition-all font-bold text-sm shadow-md"
-                    >
-                        SAVE CHANGES
-                    </button>
+                        RESET
+                        </button>
+                    </div>
+                    
+                    
                 </div>
             </form>
         </div>
