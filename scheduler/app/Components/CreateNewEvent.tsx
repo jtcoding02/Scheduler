@@ -6,6 +6,9 @@ import mockEventData from '../Data/MockEventData';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import CloseIcon from '@mui/icons-material/Close'
+import TimePicker from '@mui/x-date-pickers/TimePicker'
+import AdapterDayjs from '@mui/x-date-pickers/AdapterDayjs';
+import LocalizationProvider from '@mui/x-date-pickers/LocalizationProvider';
 
 interface CreateNewEventProps {
     events: any[];
@@ -155,11 +158,18 @@ const CreateNewEvent = ({ events, onClose, onSave }: CreateNewEventProps) => {
                             onChange={(e) => setStartDate(e.target.value)}
                             className="modal-field flex-1 border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1532A8]"
                         />
-                        <input 
+                        {/* <input 
                             type="time"
                             value={startTime}
                             onChange={(e) => setStartTime(e.target.value)}
                             className="modal-field flex-1 border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1532A8]"
+                        /> */}
+
+                        <TimePicker
+                            label="Start Time"
+                            value={startTime}
+                            views={['hours', 'minutes']}
+                            onChange={(e) => setStartTime(e.target.value)}
                         />
                     </div>
                 </div>
