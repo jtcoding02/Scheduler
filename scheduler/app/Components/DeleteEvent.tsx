@@ -81,7 +81,12 @@ const DeleteEvent = ({ event, onClose, onConfirmDelete }: DeleteEventProps) => {
                         <span className="pr-1 flex font-semibold">End Date:</span>
                         <p className="flex">{formatDateTime(event.endDate)}</p>
                     </div>
-                    {
+                    {event.description !== undefined &&
+
+                    <div className="fle flex-col text-sm pb-2">
+                        <span className="pb-2 flex font-semibold">Description:</span>
+                        <p className="flex">{event.description}</p>
+                    </div>
                         
                     }
                     <div className="">
