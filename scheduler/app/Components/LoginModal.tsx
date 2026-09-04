@@ -14,10 +14,16 @@ const LoginModal = () => {
         setPassword('')
     }
 
-    const handleLogin = () = {
+    const handleLogin = (e: React.FormEvent) => {
+        e.preventDefault();
 
+        // 1. Validate mandatory fields
+        if (!email || !password) {
+            alert('Please fill out your Email and Password.');
+            return;
+        }
     }
-    
+
     return(
         <div className="modal-div flex flex-col min-w-[35rem] p-6 bg-white text-black text-left">
             <div className="modal-header-div flex justify-between items-center pb-4 border-b border-gray-200">
@@ -39,12 +45,12 @@ const LoginModal = () => {
             </div>
 
             {/* Form Fields Container */}
-            <form onSubmit={handleCreate} className="modal-content-div flex flex-col gap-4 py-4">
-                {/* Title */}
+            <form onSubmit={handleLogin} className="modal-content-div flex flex-col gap-4 py-4">
+                {/* Email */}
                 <div className="flex flex-col gap-1">
                     <div className="">
                         <label className="modal-title font-semibold text-sm text-gray-700">
-                        Title
+                        Email
                         <span className="text-red-700">
                             *
                         </span>
@@ -54,81 +60,41 @@ const LoginModal = () => {
                     <div className="">
                         <input 
                         type="text"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         className="w-full modal-field"
                         
-                        placeholder="Enter title here..."
+                        placeholder="Enter email here..."
                         />
                     </div>
                     
                 </div>
 
-                {/* Start Time Section */}
+                
+                {/* Password: NOTE, Need to edit to password field and add security */}
                 <div className="flex flex-col gap-1">
-                    <label className="modal-title font-semibold text-sm text-gray-700">
-                        Start Time
+                    <div className="">
+                        <label className="modal-title font-semibold text-sm text-gray-700">
+                        Password
                         <span className="text-red-700">
                             *
                         </span>
-                    </label>
-                    <div className="flex gap-2">
-                        <input 
-                            type="date"
-                            value={startDate}
-                            onChange={(e) => setStartDate(e.target.value)}
-                            className="modal-field flex-1 border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1532A8]"
-                        />
-                        <input 
-                            type="time"
-                            value={startTime}
-                            onChange={(e) => setStartTime(e.target.value)}
-                            className="modal-field flex-1 border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1532A8]"
-                        />
-
-                        {/* <TimePicker
-                            label="Start Time"
-                            value={startTime}
-                            views={['hours', 'minutes']}
-                            onChange={(e) => setStartTime(e.target.value)}
-                        /> */}
+                        </label>               
                     </div>
-                </div>
-
-                {/* End Time Section */}
-                <div className="flex flex-col gap-1">
-                    <label className="modal-title font-semibold text-sm text-gray-700">
-                        End Time
-                        <span className="text-red-700">
-                            *
-                        </span>
-                    </label>
-                    <div className="flex gap-2">
+                    
+                    <div className="">
                         <input 
-                            type="date"
-                            value={endDate}
-                            onChange={(e) => setEndDate(e.target.value)}
-                            className="modal-field flex-1 border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1532A8]"
-                        />
-                        <input 
-                            type="time"
-                            value={endTime}
-                            onChange={(e) => setEndTime(e.target.value)}
-                            className="modal-field flex-1 border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1532A8]"
+                        type="text"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        className="w-full modal-field"
+                        
+                        placeholder="Enter password here..."
                         />
                     </div>
+                    
                 </div>
-
-                {/* Description */}
-                <div className="flex flex-col gap-1">
-                    <label className="modal-title font-semibold text-sm text-gray-700 pb-1">Description (Optional)</label>
-                    <textarea 
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                        className="modal-field w-full border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1532A8] min-h-[4rem] resize-y"
-                        placeholder="Write a description here if needed..."
-                    />
-                </div>
+               
 
                 {/* Submission Action Grid */}
                 <div className="w-full flex justify-end gap-3 pt-4 ">
@@ -137,7 +103,7 @@ const LoginModal = () => {
                         type="submit"
                         className="w-full px-5 py-2.5 rounded-lg bg-[#1532A8] hover:bg-[#2546c4] text-white transition-all font-bold text-sm shadow-md"
                     >
-                        CREATE
+                        LOGIN
                         </button>
                     </div>
                     <div className="flex w-full">
@@ -152,7 +118,22 @@ const LoginModal = () => {
                     
                     
                 </div>
+                
             </form>
+
+            {/* Sign Up Prompt */}
+            <div className=''>
+                <div className=''>
+                    <p className=''>Don't have an account? </p>
+                </div>
+                <div>
+                    <button>
+                        Sign Up
+                    </button>
+                </div>
+            </div>
+
+            
 
             {/* <div className = "modal-content-div">
                 <div className="title-field-div modal-field-div">
@@ -242,3 +223,5 @@ const LoginModal = () => {
         
     )
 }
+
+export default LoginModal;
