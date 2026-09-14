@@ -11,6 +11,7 @@ function SignUpPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPwd, setConfirmPwd] = useState('');
+    const [warning, setWarning] = useState('');
 
     const handleClear = () => {
         setFirstName('');
@@ -18,6 +19,19 @@ function SignUpPage() {
         setEmail('');
         setPassword('');
         setConfirmPwd('');
+    }
+
+    //if name not entered, instead of Hello Name, can be Hello User
+
+    const handleSignUp = () => {
+        if(!firstName || !email || !password || !confirmPwd){
+            alert('Please fill out at least the First Name, Email, Password and Confirm Password fields.'
+            )
+            setWarning('Please fill out at least the First Name, Email, Password and Confirm Password fields.')
+            return;
+        }
+
+         setWarning('');
     }
 
     return (
@@ -39,7 +53,7 @@ function SignUpPage() {
                             
                         </div>
                         <div>
-                            <form onSubmit={handleCreate} className="modal-content-div flex flex-col gap-4 py-4">
+                            <form onSubmit={handleSignUp} className="modal-content-div flex flex-col gap-4 py-4">
                                 {/* Title */}
                                 <div className="flex flex-col gap-1">
                                     <div className="">
