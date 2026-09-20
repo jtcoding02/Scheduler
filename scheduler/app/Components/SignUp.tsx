@@ -224,9 +224,9 @@ const SignUp = () =>  {
                         </div>
                     </form>
 
-                    <div className="login-div">
+                    <div className="login-div pt-4">
                         <p>Already have an account? <div>
-                            <button className="font-semibold">
+                            <button className="font-semibold ">
                                 Login Here
                             </button>
                             </div>

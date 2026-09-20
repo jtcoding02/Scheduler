@@ -166,7 +166,14 @@ const Login = () =>  {
                         </div>
                     </form>
 
-                    
+                    <div className="signup-link-div pt-4">
+                        <p>Don't have an account? <div>
+                            <button className="font-semibold ">
+                                Sign Up
+                            </button>
+                            </div>
+                        </p>
+                    </div>
 
                 </div>
             </div>
@@ -175,4 +182,4 @@ const Login = () =>  {
     )
 }
 
-export default SignUp;
+export default Login;
