@@ -61,7 +61,7 @@ const TopNavBar = () => {
                                     <div className = "navbar-btn-div flex align-center items-center text-center justify-center">
                                     
                                         <Link href="../login"  className = "navbar-btn flex text-center align-center items-center  justify-center p-2">
-                                            <p className="navbar-btn-txt flex text-center font-mono font-bold  justify-center">SIGN UP</p>
+                                            <p className="navbar-btn-txt flex text-center font-mono font-bold  justify-center">LOGIN</p>
                                         </Link>
                                     </div>
                                 </li>
