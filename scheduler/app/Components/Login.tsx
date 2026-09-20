@@ -4,37 +4,25 @@ import Image from 'next/image';
 import '.././globals.css';
 import '../Styling/style.css';
 
-const SignUp = () =>  {
+const Login = () =>  {
 
-    const [name, setName] = useState('');
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [confirmPwd, setConfirmPwd] = useState('');
     const [warning, setWarning] = useState('');
 
     const handleClear = () => {
-        setName('');
-        setFirstName('');
-        setLastName('');
         setEmail('');
         setPassword('');
-        setConfirmPwd('');
     }
 
     //if name not entered, instead of Hello Name, can be Hello User
 
-    const handleSignUp = () => {
-        if(!email || !password || !confirmPwd){
-            alert('Please fill out at least the Email, Password and Confirm Password fields.'
+    const handleLogin = () => {
+        if(!email || !password){
+            alert('Please fill out all fields.'
             )
-            setWarning('Please fill out at least the Email, Password and Confirm Password fields.')
+            setWarning('Please fill out all fields.')
             return;
-        }
-
-        if(password !== confirmPwd){
-            setWarning('Please make sure that the password fields match.')
         }
 
         alert('Submitted!');
@@ -49,18 +37,18 @@ const SignUp = () =>  {
                 <div className="title-section-div flex">
                     <section className="title-section flex flex-col">
                         <div className="text-2xl font-bold text-black pb-4">
-                            <p className="">Create An Account</p>
+                            <p className="">Welcome Back!</p>
                         </div>
                         <div className="">
                             <p className="text-xl font-semibold text-black">
-                                <span className="">Sign Up</span> with your details
+                                <span className="text-[#1532A8]">Login</span> with your email and password.
                             </p>
                         </div>
                     </section>
                     
                 </div>
                 <div className="text-lg">
-                    <form onSubmit={handleSignUp} className="modal-content-div flex flex-col gap-4 py-4 text-lg">
+                    <form onSubmit={handleLogin} className="modal-content-div flex flex-col gap-4 py-4 text-lg">
                         
                         {/* First and Last Name Section */}
                         {/* <div className="flex flex-col gap-1">
@@ -123,31 +111,7 @@ const SignUp = () =>  {
                             
                         </div>
 
-                        {/* Name */}
-                        <div className="flex flex-col gap-1">
-                            <div className="">
-                                <label className="modal-title font-semibold text-sm text-gray-700">
-                                Name <span className="text-black">
-                                    (Optional)
-                                </span>
-                                </label>               
-                            </div>
-                            
-                            <div className="">
-                                <input 
-                                type="text"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
-                                className="w-full modal-field"
-                                
-                                placeholder="Enter name here..."
-                                />
-                            </div>
-                            
-                        </div>
-
-                        
-
+        
                         {/* Password and Confirm Password */}
                         <div className="flex password-fields flex-col">
                             <div className="flex flex-col gap-1 pb-4">
@@ -173,41 +137,19 @@ const SignUp = () =>  {
                             
                             </div>
 
-                            <div className="flex flex-col gap-1 ">
-                                <div className="">
-                                    <label className="modal-title font-semibold text-sm text-gray-700">
-                                    Confirm Password
-                                    <span className="text-red-700">
-                                        *
-                                    </span>
-                                    </label>               
-                                </div>
-                                
-                                <div className="">
-                                    <input 
-                                    type="text"
-                                    value={confirmPwd}
-                                    onChange={(e) => setConfirmPwd(e.target.value)}
-                                    className="w-full modal-field"
-                                    
-                                    placeholder="Enter title here..."
-                                    />
-                                </div>
-                            
-                            </div>
                         </div>
                         
 
                         
 
                         {/* Submission Action Grid */}
-                        <div className="w-full flex justify-end gap-3 pt-4 ">
-                            <div className="w-full flex">
+                        <div className="w-full flex flex-col justify-end gap-3 pt-4 ">
+                            <div className="w-full flex pb-4">
                                 <button 
                                 type="submit"
                                 className="w-full px-5 py-2.5 rounded-lg bg-[#1532A8] hover:bg-[#2546c4] text-white transition-all font-bold text-sm shadow-md"
                             >
-                                SIGNUP
+                                LOGIN
                                 </button>
                             </div>
                             <div className="flex w-full">
@@ -224,14 +166,8 @@ const SignUp = () =>  {
                         </div>
                     </form>
 
-                    <div className="login-div">
-                        <p>Already have an account? <div>
-                            <button className="font-semibold">
-                                Login Here
-                            </button>
-                            </div>
-                        </p>
-                    </div>
+                    
+
                 </div>
             </div>
         </div>
