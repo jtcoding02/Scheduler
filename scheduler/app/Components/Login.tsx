@@ -3,6 +3,8 @@ import React, {Component, useState} from 'react';
 import Image from 'next/image';
 import '.././globals.css';
 import '../Styling/style.css';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIosNew';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const Login = () =>  {
 
@@ -36,9 +38,18 @@ const Login = () =>  {
             <div className="bg-white rounded-xl shadow-2xl overflow-hidden border border-gray-200 p-8">
                 <div className="title-section-div flex">
                     <section className="title-section flex flex-col">
-                        <div className="text-2xl font-bold text-black pb-4">
-                            <p className="">Welcome Back!</p>
+                        <div className="flex">
+                            {/* <div className="detail-header-left flex items-center gap-4">
+                                <button onClick={} className="size-10 flex justify-center items-center rounded-full bg-black text-white hover:bg-gray-800 transition-colors shadow-md">
+                                    <ArrowBackIosIcon className="size-5" />
+                                </button>
+                               
+                            </div> */}
+                            <div className="text-2xl font-bold text-black pb-4 pl-4">
+                                <p className="">Welcome Back!</p>
+                            </div>
                         </div>
+                        
                         <div className="">
                             <p className="text-xl font-semibold text-black">
                                 <span className="text-[#1532A8]">Login</span> with your email and password.

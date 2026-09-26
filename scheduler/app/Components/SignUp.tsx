@@ -225,11 +225,11 @@ const SignUp = () =>  {
                     </form>
 
                     <div className="login-div pt-4">
-                        <p>Already have an account? <div>
+                        <p>Already have an account? 
                             <button className="font-semibold ">
                                 Login Here
                             </button>
-                            </div>
+                            
                         </p>
                     </div>
                 </div>

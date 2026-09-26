@@ -7,6 +7,9 @@ import Link from "next/link";
 //https://dev.to/lada496/two-ways-of-putting-page-navigation-to-all-pages-with-react-routerv6-4hj1
 
 const TopNavBar = () => {
+
+    const userData = []
+
     return (
         <div className = "navbar-div flex w-full h-full min-h-[4rem]" >
             <nav className = "navbar h-full w-full flex p-4 justify-between bg-[#1532A8] items-center">
@@ -93,9 +96,30 @@ const TopNavBar = () => {
                 </div> */}
 
                 <div className="navbar-right">
-                    <div className = "navbar-account-div items-center justify-center align-middle flex">
+                    
+                    {userData.length == 0 ? (
+                        <div className="no-account-menu relative-div">
+                            <button type="button" className="user-profile">
+                                <div className = "navbar-account-div items-center justify-center align-middle flex">
+                                    <Image src={AccountIconSVG} className = "navbar-account size-[2rem]"  alt = "Account Icon" />
+                                </div>
+                            </button>
+                            <div className="custom-profile-dropdown active">
+                                <h3 className="menu-name">
+                                    User
+                                </h3>
+                            </div>
+                        </div>
+                    ) : (
+                        <div className="logged-in-menu">
+                             <button>
+                                
+                            </button>
+                        </div>
+                    )}
+                    {/* <div className = "navbar-account-div items-center justify-center align-middle flex">
                         <Image src={AccountIconSVG} className = "navbar-account size-[2rem]"  alt = "Account Icon" />
-                    </div>
+                    </div> */}
                 </div>
 
             </nav>
